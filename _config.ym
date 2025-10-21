@@ -1,1 +1,5 @@
-
+title: Lëtzview
+#logo
+description: Description
+#show_downloads: true
+theme: jekyll-theme-minimal
