@@ -1,30 +1,30 @@
 {
-"series": [
-{
-"id": 1,
-"title": "Sample Series",
-"poster": "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=1200",
-"description": "A friendly demo series to show how seasons and episodes work.",
-"seasons": [
-{
-"number": 1,
-"episodes": [
-{
-"number": 1,
-"title": "Welcome to Letzview",
-"description": "Intro episode.",
-"poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800",
-"audio": [
-{ "lang": "en", "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-{ "lang": "fr", "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" }
-],
-"captions": [
-{ "lang": "en", "url": "https://raw.githubusercontent.com/naptha/tesseract.js/master/docs/examples/data/eng.traineddata.gz?vtt" }
-]
-}
-]
-}
-]
-}
-]
+  "series": [
+    {
+      "id": 1761064108037,
+      "title": "Series Title",
+      "poster": "",
+      "description": "Series Description",
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Pilot Episode",
+              "description": "Episode Description",
+              "poster": "",
+              "audio": [
+                {
+                  "lang": "EN",
+                  "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                }
+              ],
+              "captions": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
