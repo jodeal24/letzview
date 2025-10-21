@@ -1,10 +1,20 @@
 <!doctype html>
-<section id="authSection" class="max-w-md mx-auto mt-10 bg-slate-900 p-6 rounded-xl border border-slate-800">
-<h1 class="text-xl font-semibold mb-4">Admin login</h1>
-<p class="text-sm opacity-80 mb-3">This protects the on-page editor only.</p>
-<input id="password" type="password" class="w-full bg-slate-800 rounded p-2 border border-slate-700" placeholder="Enter admin password" />
-<button id="loginBtn" class="mt-4 w-full bg-sky-600 hover:bg-sky-500 rounded p-2 font-medium">Login</button>
-</section>
+<div id="pwModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 hidden">
+  <div class="bg-slate-900 rounded-xl p-6 w-full max-w-md">
+    <h2 class="text-xl font-semibold mb-3">Admin login</h2>
+    <p class="text-sm opacity-80 mb-4">Enter the admin password to access the editor.</p>
+
+    <input id="pwInput" type="password" placeholder="Password"
+      class="w-full bg-slate-800 rounded p-2 border border-slate-700 mb-3" />
+
+    <div class="flex gap-2">
+      <button id="pwSubmit" class="flex-1 bg-sky-600 hover:bg-sky-500 rounded p-2">Unlock</button>
+      <button id="pwCancel" class="flex-1 bg-slate-800 hover:bg-slate-700 rounded p-2">Cancel</button>
+    </div>
+
+    <p id="pwMsg" class="text-sm text-red-400 mt-3 hidden"></p>
+  </div>
+</div>
 
 <section id="editorSection" class="hidden">
 <div class="flex items-center justify-between mb-4">
@@ -74,6 +84,39 @@ Load catalog.json
 </section>
 </main>
 
-<script type="module" src="js/admin.js"></script>
+<script type="module">
+  import initAdmin from './js/admin.js';
+
+  // show modal on load
+  const modal = document.getElementById('pwModal');
+  const input = document.getElementById('pwInput');
+  const submit = document.getElementById('pwSubmit');
+  const cancel = document.getElementById('pwCancel');
+  const msg = document.getElementById('pwMsg');
+
+  // show it
+  modal.classList.remove('hidden');
+
+  // when user submits password
+  submit.addEventListener('click', () => {
+    const v = input.value || '';
+    // call the exported checkPassword function from admin.js (we'll add it)
+    if (initAdmin.checkPassword && initAdmin.checkPassword(v)) {
+      modal.classList.add('hidden');
+      initAdmin.initEditorAfterAuth(); // initialize the editor
+    } else {
+      msg.textContent = 'Wrong password';
+      msg.classList.remove('hidden');
+    }
+  });
+
+  cancel.addEventListener('click', () => {
+    // redirect back to home or hide modal
+    window.location.href = 'index.html';
+  });
+
+  // also allow Enter key
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit.click(); });
+</script>
 </body>
 </html>
