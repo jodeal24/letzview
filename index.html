@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>letzview</title>
+<link rel="icon" href="assets/logo.png" />
+<!-- Tailwind via CDN for simplicity -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+<!-- Header -->
+<header class="flex items-center justify-between px-4 sm:px-8 py-4">
+<div class="flex items-center gap-3">
+<img src="assets/logo.png" alt="letzview logo" class="w-10 h-10" />
+<span class="text-xl sm:text-2xl font-bold tracking-wide">letzview</span>
+</div>
+<div class="flex items-center gap-2">
+<select id="langSelect" class="bg-slate-800 px-3 py-2 rounded-lg border border-slate-700"></select>
+<a href="admin.html" class="text-sm opacity-70 hover:opacity-100 underline">Admin</a>
+</div>
+</header>
+
+<!-- Hero / Featured -->
+<section id="featured" class="px-4 sm:px-8 py-6"></section>
+
+<!-- Series grid -->
+<main class="px-4 sm:px-8 pb-16">
+<h2 class="text-lg sm:text-xl font-semibold mb-4" data-t="browse_all">Browse all</h2>
+<div id="seriesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+</main>
+
+<!-- Modal for season/episode selection -->
+<div id="modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50">
+<div class="max-w-5xl mx-auto mt-12 bg-slate-900 rounded-2xl overflow-hidden shadow-xl">
+<div class="flex items-center justify-between p-4 border-b border-slate-800">
+<h3 id="modalTitle" class="text-xl font-semibold"></h3>
+<button id="modalClose" class="px-3 py-1 bg-slate-800 rounded hover:bg-slate-700">✕</button>
+</div>
+<div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+<aside class="md:col-span-1 space-y-3">
+<label class="block text-sm mb-1" data-t="choose_season">Choose season</label>
+<select id="seasonSelect" class="w-full bg-slate-800 rounded p-2 border border-slate-700"></select>
+<label class="block text-sm mt-4 mb-1" data-t="choose_episode">Choose episode</label>
+<ul id="episodeList" class="space-y-2"></ul>
+</aside>
+<section class="md:col-span-2 space-y-4">
+<div class="aspect-video bg-black rounded-xl overflow-hidden">
+<video id="player" controls class="w-full h-full" playsinline></video>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div>
+<label class="block text-xs opacity-80" data-t="audio_language">Audio language</label>
+<select id="audioSelect" class="bg-slate-800 rounded p-2 border border-slate-700"></select>
+</div>
+<div>
+<label class="block text-xs opacity-80" data-t="subtitles">Subtitles</label>
+<select id="captionSelect" class="bg-slate-800 rounded p-2 border border-slate-700">
+<option value="off" selected>Off</option>
+</select>
+</div>
+</div>
+<p id="episodeDescription" class="text-sm opacity-90"></p>
+</section>
+</div>
+</div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
