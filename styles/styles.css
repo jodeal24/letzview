@@ -1,0 +1,4 @@
+/* minor polish beyond Tailwind */
+.card { @apply bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow; }
+.card img { @apply w-full h-40 object-cover; }
+.card-body { @apply p-3; }
